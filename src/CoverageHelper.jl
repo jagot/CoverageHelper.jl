@@ -50,6 +50,10 @@ function test(pkgname; work_dir=pwd(), rm_lcov=true, rm_cov=true, css=:gruvbox)
     cmd = `genhtml $args`
 
     run(cmd)
+    # Initial copy from CoverageHelper.jl:s source directory preserves
+    # read-only permission, preventing overwriting the CSS file on
+    # subsequent runs. Here we fix this.
+    Base.Filesystem.chmod(joinpath(out, "gcov.css"), 0o644)
 
     rm_lcov && rm(lcov_file)
 

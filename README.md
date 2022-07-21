@@ -5,4 +5,4 @@ generate a HTML report:
 ```julia-repl
 julia> CoverageHelper.test("PkgName")
 ```
-. See documentation for more information.
+See documentation for more information.
